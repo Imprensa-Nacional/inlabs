@@ -8,10 +8,10 @@ O objetivo do INLABS é permitir o acesso aos arquivos das edições completas d
 
 ### Automação de Download
 
-O INLABS está disponilizando ferramentas para automatizar o downloa dos arquivos, de forma automática.
+O INLABS está disponibilizando ferramentas para automatizar o download dos arquivos, de forma automática.
 
 ### Linguages Suportadas
-Para utiliar o INLABS, basta ter um navegador de Internet.
+Para utilizar o INLABS, basta ter um navegador de Internet.
 Mas se você é um usuário avançado e quer automatizar seus downloads, o INLABS está disponibilizando scripts em diversas linguagens para facilitar este processo.
 Atualmente, as seguintes linguagens estão disponíveis.
 
@@ -21,5 +21,3 @@ Atualmente, as seguintes linguagens estão disponíveis.
 
 ### Contribua
 Ajude o INLABS desenvolvendo este mesmo script em outras linguagens e cresça a comunidade.
-
-MIT
