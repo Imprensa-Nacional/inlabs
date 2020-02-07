@@ -1,6 +1,6 @@
 # INLABS - Imprensa Nacional
 
-O objetivo do INLABS é permitir o acesso aos arquivos das edições completas do Diário Oficial da União, em formato PDF e XML, que será livre e gratuito a partir de 1º de janeiro de 2020.
+O objetivo do INLABS é permitir o acesso aos arquivos das edições completas do Diário Oficial da União, em formato PDF e XML, que é livre e gratuito desde o dia 1º de janeiro de 2020.
 
 # Funcionalidades!
 
