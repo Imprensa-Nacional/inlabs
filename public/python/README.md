@@ -40,10 +40,10 @@
 
  **Passo 4:** Execute o comando abaixo para realizar a execução do script;
 
-      $ python inlabs-auto-download-xml.py
+      $ python -W ignore inlabs-auto-download-xml.py
 
  **E/OU**
 
-       $ python inlabs-auto-download-pdf.py
+       $ python -W ignore inlabs-auto-download-pdf.py
 
  **Sugestões** Adicione entradas no crontab para execuções periódicas de acordo com sua necessidade;
