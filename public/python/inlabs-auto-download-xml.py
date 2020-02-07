@@ -15,7 +15,7 @@ headers = {
     "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
     }
 s = requests.Session()
-response = s.request("POST", url_login, data=payload, headers=headers)
+response = s.request("POST", url_login, data=payload, headers=headers, verify=False)
 
 if s.cookies.get('inlabs_session_cookie'):
     cookie = s.cookies.get('inlabs_session_cookie')
