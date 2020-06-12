@@ -18,7 +18,7 @@ mes=`date +%m`
 ano=`date +%Y`
 
 ## LOGIN ##
-login="curl --cookie-jar cookies.iakim 'http://inlabs.in.gov.br/logar.php' -H 'origem: 736372697074' --data 'email=$email&password=$senha' --compressed"
+login="curl --cookie-jar cookies.iakim 'https://inlabs.in.gov.br/logar.php' -H 'origem: 736372697074' --data 'email=$email&password=$senha' --compressed"
 echo $login > login.sh
 sh login.sh
 rm -rf login.sh
@@ -41,7 +41,7 @@ fi
 ## DOWNLOAD ##
 for secao in $tipo_dou;
 do
-	download="curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl=$ano-$mes-$dia-$secao.zip' -H 'origem: 736372697074' --output $ano-$mes-$dia-$secao.zip"
+	download="curl --silent -fL -b cookies.iakim 'https://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl=$ano-$mes-$dia-$secao.zip' -H 'origem: 736372697074' --output $ano-$mes-$dia-$secao.zip"
 	echo $download > $ano-$mes-$dia-$secao.sh
 	sh $ano-$mes-$dia-$secao.sh
 	rm -rf $ano-$mes-$dia-$secao.sh
