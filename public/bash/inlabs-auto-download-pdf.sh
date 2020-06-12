@@ -47,7 +47,7 @@ do
         sh $ano-$mes-$dia-$secao.sh
         rm -rf $ano-$mes-$dia-$secao.sh
 	
-	for seq in A B C D E F G H
+	for seq in A B C D E F G H I J K L M N O P Q R S T U V X W Y Z
 	do
 		echo "curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
 		download="curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
