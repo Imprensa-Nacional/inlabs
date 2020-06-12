@@ -18,7 +18,7 @@ mes=`date +%m`
 ano=`date +%Y`
 
 ## LOGIN ##
-login="curl --cookie-jar cookies.iakim 'http://inlabs.in.gov.br/logar.php' -H 'origem: 736372697074' --data 'email=$email&password=$senha' --compressed"
+login="curl --cookie-jar cookies.iakim 'https://inlabs.in.gov.br/logar.php' -H 'origem: 736372697074' --data 'email=$email&password=$senha' --compressed"
 echo $login > login.sh
 sh login.sh
 rm -rf login.sh
@@ -41,16 +41,16 @@ fi
 ## DOWNLOAD ##
 for secao in $tipo_dou;
 do
-	echo "curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf"
-	download="curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf"
+	echo "curl --silent -fL -b cookies.iakim 'https://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf"
+	download="curl --silent -fL -b cookies.iakim 'https://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao".pdf"
         echo $download > $ano-$mes-$dia-$secao.sh
         sh $ano-$mes-$dia-$secao.sh
         rm -rf $ano-$mes-$dia-$secao.sh
 	
 	for seq in A B C D E F G H I J K L M N O P Q R S T U V X W Y Z
 	do
-		echo "curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
-		download="curl --silent -fL -b cookies.iakim 'http://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
+		echo "curl --silent -fL -b cookies.iakim 'https://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
+		download="curl --silent -fL -b cookies.iakim 'https://inlabs.in.gov.br/index.php?p=$ano-$mes-$dia&dl="$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq".pdf' -H 'origem: 736372697074' --output "$ano"_"$mes"_"$dia"_ASSINADO_"$secao"_extra_"$seq""
 		echo $download > $ano-$mes-$dia-$secao.sh
 		sh $ano-$mes-$dia-$secao.sh
 		rm -rf $ano-$mes-$dia-$secao.sh
