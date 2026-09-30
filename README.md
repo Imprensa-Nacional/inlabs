@@ -4,7 +4,7 @@
 
 O objetivo do INLABS é permitir o acesso aos arquivos das edições completas do Diário Oficial da União, em formato PDF e XML, que é livre e gratuito desde o dia 1º de janeiro de 2020.
 Os dados estão disponíveis na ferramenta INLabs para os últimos 4 meses da data corrente. 
-Para períodos anteriores, se faz necessário recorrer às coleções disponíveis na página de [Dados Abertos da Imprensa Nacional](https://dados.gov.br/dados/organizacoes/visualizar/imprensa-nacional-in/).
+Para períodos anteriores, se faz necessário recorrer às coleções disponíveis na página de Dados Abertos.
 
 # Funcionalidades!
 
