@@ -1,8 +1,13 @@
 from datetime import date
 import requests
+import argparse
 
-login = "email@dominio.com"
-senha = "sua_senha"
+parser = argparse.ArgumentParser()
+parser.add_argument("--data",help="data (dd-mm-YYYY) para as consultas. Omissão ou data inválida sinaliza data de hoje")
+data_arg = parser.parse_args()
+
+#login =
+#senha =
 
 ## Tipos de Diários Oficiais da União permitidos: do1 do2 do3 (Contempla as edições extras) ##
 tipo_dou="do1 do2 do3"
@@ -17,19 +22,41 @@ headers = {
     }
 s = requests.Session()
 
-def download():
-    if s.cookies.get('inlabs_session_cookie'):
-        cookie = s.cookies.get('inlabs_session_cookie')
-    else:
-        print("Falha ao obter cookie. Verifique suas credenciais");
-        exit(37)
-    # Montagem da URL:
+def usarHoje():
     ano = date.today().strftime("%Y")
     mes = date.today().strftime("%m")
     dia = date.today().strftime("%d")
     data_completa = ano + "-" + mes + "-" + dia
-    
-    # Download inicial
+    return ano, mes, dia, data_completa
+
+def download():
+    cookie = str()
+    cookie = s.cookies.get('inlabs_session_cookie')
+
+    if(not cookie):
+        print("Falha ao obter cookie. Verifique suas credenciais")
+        exit(37)
+
+    data_manual = data_arg.data
+
+    if(data_manual):
+        print("Atenção: conforme testado até 11/03/2026, esta opção permitia apenas consulta de arquivos dos últimos quatro meses anteriores a hoje, "+date.today().strftime("%d/%m/%Y")+". Aconselha-se que o usuário verifique https://inlabs.in.gov.br/index.php?p= para visualizar os arquivos disponíveis.")
+        ano = data_manual[6:]
+        mes = data_manual[3:5]
+        dia = data_manual[:2]
+        data_completa = ano+"-"+mes+"-"+dia
+
+        try:
+            data_verif = date.fromisoformat(data_completa)
+        except:
+            print("Data inválida ou não fornecida. Recorrendo à data de hoje...")
+            ano, mes, dia, data_completa = usarHoje()
+    else:
+        ano, mes, dia, data_completa = usarHoje()
+
+    print("A data para consulta é "+data_completa+".")
+
+    #Download inicial
     for dou_secao in tipo_dou.split(' '):
         print("Aguarde Download...")
         url_arquivo = url_download + data_completa + "&dl=" + ano + "_" + mes + "_" + dia + "_ASSINADO_" + dou_secao + ".pdf"
@@ -52,4 +79,5 @@ def login():
         download()
     except requests.exceptions.ConnectionError:
         login()
+
 login()
