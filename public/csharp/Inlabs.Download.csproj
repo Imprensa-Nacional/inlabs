@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Inlabs.Download</AssemblyName>
+    <RootNamespace>Inlabs.Download</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- O projeto de verificações offline tem o próprio ponto de entrada. -->
+    <Compile Remove="tests/**" />
+    <InternalsVisibleTo Include="Inlabs.Download.Checks" />
+  </ItemGroup>
+
+</Project>
