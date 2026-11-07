@@ -23,6 +23,7 @@ Atualmente, as seguintes linguagens estão disponíveis.
 
  - Bash
  - Python 3
+ - [C# (.NET 9)](public/csharp/README.md)
 
 
 ### Contribua

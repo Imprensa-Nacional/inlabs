@@ -1,0 +1,9 @@
+# Artefatos de build
+bin/
+obj/
+
+# Artefatos locais de execução
+downloads/
+*.zip
+*.pdf
+*.tmp
