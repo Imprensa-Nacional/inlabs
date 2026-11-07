@@ -1,0 +1,90 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Ajuda (--help)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net9.0/Inlabs.Download.dll",
+      "args": ["--help"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Baixar XML",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net9.0/Inlabs.Download.dll",
+      "args": [
+        "--format", "xml",
+        "--sections", "${input:xmlSections}",
+        "--output", "${workspaceFolder}/downloads"
+      ],
+      "env": {
+        "INLABS_EMAIL": "${input:inlabsEmail}",
+        "INLABS_PASSWORD": "${input:inlabsPassword}"
+      },
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Baixar PDF",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net9.0/Inlabs.Download.dll",
+      "args": [
+        "--format", "pdf",
+        "--sections", "${input:pdfSections}",
+        "--output", "${workspaceFolder}/downloads"
+      ],
+      "env": {
+        "INLABS_EMAIL": "${input:inlabsEmail}",
+        "INLABS_PASSWORD": "${input:inlabsPassword}"
+      },
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Verificações offline",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-checks",
+      "program": "${workspaceFolder}/tests/bin/Debug/net9.0/Inlabs.Download.Checks.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    }
+  ],
+  "inputs": [
+    {
+      "id": "inlabsEmail",
+      "type": "promptString",
+      "description": "E-mail (login) da conta INLABS"
+    },
+    {
+      "id": "inlabsPassword",
+      "type": "promptString",
+      "description": "Senha da conta INLABS (não é gravada em arquivo)",
+      "password": true
+    },
+    {
+      "id": "xmlSections",
+      "type": "promptString",
+      "description": "Seções XML separadas por espaço",
+      "default": "DO1 DO2 DO3 DO1E DO2E DO3E"
+    },
+    {
+      "id": "pdfSections",
+      "type": "promptString",
+      "description": "Seções PDF separadas por espaço",
+      "default": "do1 do2 do3"
+    }
+  ]
+}

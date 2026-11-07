@@ -137,6 +137,27 @@ Cron (Linux), com a aplicação publicada previamente (`dotnet publish public/cs
 
 Agendador de Tarefas do Windows: crie uma tarefa que execute `dotnet.exe` com o argumento `C:\inlabs\Inlabs.Download.dll --format xml --output D:\inlabs`, defina o diretório "Iniciar em" e configure as variáveis de ambiente `INLABS_EMAIL` e `INLABS_PASSWORD` para o usuário da tarefa.
 
+## Visual Studio Code
+
+A pasta `public/csharp` já traz a configuração em `.vscode/`. Para usar:
+
+1. Instale o [.NET SDK](https://dotnet.microsoft.com/download) e a extensão **C#** (`ms-dotnettools.csharp`), recomendada automaticamente pelo VS Code.
+2. Abra **a pasta `public/csharp`** (`code public/csharp`), e não a raiz do repositório. Os caminhos de `launch.json` e `tasks.json` são relativos a ela.
+3. Em **Executar e Depurar** (`Ctrl+Shift+D`), escolha uma configuração e pressione `F5`:
+
+| Configuração | O que faz |
+| --- | --- |
+| Ajuda (--help) | Exibe a ajuda; não precisa de credenciais |
+| Baixar XML | Pede e-mail, senha e seções; salva em `./downloads` |
+| Baixar PDF | Pede e-mail, senha e seções; salva em `./downloads` |
+| Verificações offline | Executa as verificações offline, sem credenciais e sem acesso ao INLABS |
+
+O e-mail e a senha são solicitados a cada execução (a senha é digitada de forma oculta) e passados ao processo como variáveis de ambiente. Nenhuma credencial é gravada nos arquivos do projeto. A pasta `downloads/` está no `.gitignore`.
+
+Pelo menu **Terminal > Executar Tarefa** (ou `Ctrl+Shift+B` para compilar) estão disponíveis as tarefas `build`, `build-checks` e `verificações offline`.
+
+> As configurações apontam para `bin/Debug/net9.0`. Se você mudar o `TargetFramework` dos `.csproj`, atualize também os caminhos em `.vscode/launch.json`.
+
 ## Compilar e verificar
 
 ```bash
