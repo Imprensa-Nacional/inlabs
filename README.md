@@ -23,6 +23,7 @@ Atualmente, as seguintes linguagens estão disponíveis.
 
  - Bash
  - Python 3
+ - PHP 8.1+
 
 
 ### Contribua
