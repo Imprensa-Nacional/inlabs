@@ -3,7 +3,7 @@
 
 ### Instruções de utilização do script em PHP:
 
-**Requisitos:** PHP 8.1 ou superior com a extensão cURL habilitada (`php -m | grep curl`).
+**Requisitos:** PHP 8.1 ou superior com a extensão cURL habilitada (`php -m | grep curl`), ou o Docker (veja [Usando com Docker](#usando-com-docker)).
 
 **Passo 1:** Faça o download do arquivo inlabs-auto-download-xml.php ou inlabs-auto-download-pdf.php;
 
@@ -77,3 +77,30 @@ Em vez de editar o arquivo, você pode informar as configurações por variávei
 | `INLABS_SECOES_XML` | `DO1 DO2 DO1E`          | `$tipo_dou` do script de XML      |
 | `INLABS_SECOES_PDF` | `do1 do3`               | `$tipo_dou` do script de PDF      |
 | `INLABS_DESTINO`    | `/home/user/dou`        | `$pasta_destino`                  |
+
+### Usando com Docker
+
+Não precisa ter o PHP instalado: basta ter o Docker.
+
+ **Passo 1:** Gere a imagem a partir desta pasta;
+
+      $ docker build -t inlabs-php .
+
+ **Passo 2:** Crie um arquivo `inlabs.env` com suas credenciais. Assim a senha não fica no histórico do terminal;
+
+      INLABS_EMAIL=joaosilva@email.com
+      INLABS_SENHA=J0ao747$#
+
+ **Passo 3:** Execute informando o tipo (`xml` ou `pdf`) e, se quiser, a data. Os arquivos são salvos na pasta montada em `/dados`;
+
+      $ docker run --rm --env-file inlabs.env -v "$(pwd)/dou:/dados" inlabs-php xml
+
+      $ docker run --rm --env-file inlabs.env -v "$(pwd)/dou:/dados" inlabs-php pdf 2026-11-20
+
+      $ docker run --rm --env-file inlabs.env -e INLABS_SECOES_XML="DO1 DO1E" -v "$(pwd)/dou:/dados" inlabs-php xml
+
+ O container roda com um usuário sem privilégios (UID 1000). No Linux, se a pasta de destino pertencer a outro usuário, acrescente `--user "$(id -u):$(id -g)"` ao comando.
+
+ **Sugestão:** agende no crontab;
+
+      01 10 * * * docker run --rm --env-file /home/user/inlabs.env -v /home/user/dou:/dados inlabs-php xml >> /tmp/inlabs-auto-download-xml.txt
